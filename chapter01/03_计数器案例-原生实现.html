@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--命令式编程-->
+    <h2 class="counter">0</h2>
+    <button class="inc">+1</button>
+    <button class="dec">-1</button>
+    <script>
+        //定义变量
+        const counterE1 = document.querySelector(".counter");
+        const incE1 = document.querySelector(".inc");
+        const decE1 = document.querySelector(".dec");
+
+        //定义变量
+        let counter = 100;
+        counterE1.innerHTML = counter;
+
+        //监听按钮单击
+        incE1.addEventListener("click", () => {
+            counter += 1;
+            counterE1.innerHTML = counter;
+        })
+        decE1.addEventListener("click", () => {
+            counter -= 1;
+            counterE1.innerHTML = counter;
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
