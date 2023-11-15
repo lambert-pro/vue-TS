@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .active{
+        color: red;
+    }
+    .title{
+        font-size: 20px;
+    }
+</style>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        
+        <div :class="'abc'">class绑定字符串1</div>
+        <div :class="className">class绑定字符串2</div>
+
+        <div :class="{'active':isActive}">class绑定对象1</div>
+        <div :class="{active:isActive, title: isTitle}">class绑定对象2</div>
+
+        <div class="abc cba" :class="{active: isActive, title: true}">默认的class和动态的class结合</div>
+        
+        <div class="abc cba" :class="classObj">绑定属性中的对象</div>
+
+        <div class="abc cba" :class="getClassObj()">绑定methods/computed返回的对象</div>
+
+        <button @click="toggle"> 切换isActive</button>
+        <button @click="toggleTitle"> 切换为title</button>
+    </template>  
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: "#my-app",
+            data() {
+                return {
+                    className: "coderWhy",
+                    isActive: true,
+                    isTitle:false,
+                    classObj: {
+                        active: true,
+                        title: true
+                    },
+                }
+            },
+            methods: {
+                toggle(){
+                    this.isActive = !this.isActive;
+                },
+                getClassObj(){
+                    return {
+                        active: false,
+                        title: true,
+                    }
+                },
+                toggleTitle(){
+                    this.isTitle = !this.isTitle
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

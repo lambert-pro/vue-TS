@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  img{
+    height: 30px;
+    width: 30px;
+  }
+</style>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        
+      <!--1.基本使用-->
+      <img v-bind:src="imgUrl"> 
+      <a v-bind:href="link">百度一下</a>
+
+      <!--2.语法糖（简写）-->
+      <img :src="imgUrl" sty> 
+
+      <!--3.直接复制imgUrl字符串给src属性-->
+      <img src="imgUrl" alt="">
+
+    </template>  
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: "#my-app",
+            data() {
+                return {
+                    imgUrl: "https://v2.cn.vuejs.org/images/logo.svg",
+                    link: "https://www.baidu.com"
+                }
+            },
+            methods: {
+                
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
