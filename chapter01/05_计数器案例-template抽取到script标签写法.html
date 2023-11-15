@@ -11,21 +11,25 @@
 <body>
     <!--声明式编程-->
     <div id="app"></div>
+    
+    <!--用script标签编写模板内容，需要添加type和id属性-->
+    <script type="x-template" id="why">
+        <div>
+            <h2>{{msg}}</h2>
+            <h2>{{counter}}</h2>
+            <button @click='inc'>+1</button>
+            <button @click='dec'>-1</button>
+        </div>
+    </script>
+
     <script src="./js/vue@3.2.23.js"></script>
     <script>
         //vue实例是通过Vue.createApp(object)函数创建，参数是一个对象，该对象可以添加template、data和methods
         const app = Vue.createApp({
-            template: `
-                <div>
-                    <h2>
-                        {{counter}}    
-                    </h2>
-                    <button @click='inc'>+1</button>
-                    <button @click='dec'>-1</button>
-                </div>
-            `,
+            template: '#why',
             data: function () {
                 return {
+                    msg:"使用script标签优化计数器模板的编写",
                     counter: 1001
                 }
             },
