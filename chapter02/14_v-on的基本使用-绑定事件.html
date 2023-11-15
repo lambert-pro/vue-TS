@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .area{
+        width: 100px;
+        height: 100px;
+        background: #ddd;
+        margin-bottom: 4px;
+    }
+
+</style>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        
+        <button v-on:click="btnClick">监听按钮单击（完整写法）</button>
+
+        <div class="area" @mousemove="mouseMove">监听鼠标移动事件</div>
+
+        <button @click="btnClick">监听按钮单击（语法糖）</button>
+
+        <br>
+        <span>{{counter}}</span><br>
+        <button @click="counter++"> click +1</button>
+        <button @click="counter--"> click -1</button>
+        
+        <div class="area" v-on="{click: btnClick, mousemove: mouseMove}">监听鼠标移动事件</div>
+
+        <div class="area" @="{click: btnClick, mousemove: mouseMove}">监听鼠标移动事件(简写)</div>
+
+    </template>  
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: "#my-app",
+            data() {
+                return {
+                    message: "Hellow Vue!",
+                    counter: 100
+                }
+            },
+            methods: {
+                mouseMove(){
+                    console.log(`output->鼠标移动`)
+                },
+                btnClick(){
+                    console.log(`output->按钮1发生了单击`)
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
