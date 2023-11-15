@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <!--Vue3将数据显示到模板中，常用的方法是插值语法，也叫双括号法-->
+    <template id="my-app">
+        <!--1.mustache基本用法-->
+        <h4>{{msg}} - {{isShow}}</h4>
+
+        <!--2.mustache语法包含一个表达式-->
+        <h4>{{counter * 10}}</h4>
+        <h4>{{ msg.split(" ").join("-") }}</h4>
+
+        <!--3.mustache语法调用方法-->
+        <h4>{{getReverseMessage()}}</h4>
+
+        <!--4.mustache语法支持三元运算符-->
+        <h4>{{isShow ? '三元运算符' : ""}}</h4>
+        
+        <button @click="toggle"> 切换控制显示</button>
+
+    </template>  
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: "#my-app",
+            data() {
+                return {
+                    msg: "Hellow Vue!",
+                    counter: 100,
+                    isShow: true
+                }
+            },
+            methods: {
+                getReverseMessage (){
+                    return this.msg.split(" ").reverse().join();
+                },
+                toggle(){
+                    this.isShow = !this.isShow;
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--声明式编程-->
+    <div id="app"></div>
+
+    <!--使用template标签编写模板内容，需要添加id属性-->
+    <template id="why">
+        <div>
+            <h2>{{msg}}</h2>
+            <h2>{{counter}}</h2>
+            <button @click='inc'>+1</button>
+            <button @click='dec'>-1</button>
+        </div>
+    </template>
+
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        //vue实例是通过Vue.createApp(object)函数创建，参数是一个对象，该对象可以添加template、data和methods
+        const app = Vue.createApp({
+            template: "#why",
+            data: function () {
+                return {
+                    msg:"methods中的this",
+                    counter: 1001
+                }
+            },
+            methods: {
+                //1-箭头函数
+                inc: () => {
+                    this.counter++;
+                    console.log('inc=>',this)
+                },
+
+                //2-function函数的简写语法
+                dec(){
+                    this.counter--;
+                    console.log('dec=>',this)
+                },
+
+                //3-function函数的完整写法
+                // dec:function() {
+                //     this.counter--;
+                // }
+
+            }
+        }).mount("#app");
+    </script>
+
+</body>
+
+</html>
