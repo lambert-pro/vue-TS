@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <meta name="viewport">
     <title>Document</title>
 </head>
 
 <body>
     <div id="app"></div>
     <template id="my-app">
-        
-        
+
+        <!--1.Vue.js内部会自动传入event对象，可以直接在方法中获取-->
+        <button @click="btnClick">自动传入event对象</button>
+
+        <!--2.$event是固定写法-->
+        <button @click="btn2Click($event, 'coderwhy', 18)">手动传入event对象</button>
 
 
-    </template>  
+    </template>
     <script src="./js/vue@3.2.23.js"></script>
     <script>
         const app = Vue.createApp({
@@ -26,9 +30,14 @@
                     message: "Hellow Vue!"
                 }
             },
-            
+
             methods: {
-                
+                btnClick(event) {
+                    console.log(event)
+                },
+                btn2Click(event, name, age) {
+                    console.log(event, name, age)
+                }
             }
         }).mount("#app");
     </script>
