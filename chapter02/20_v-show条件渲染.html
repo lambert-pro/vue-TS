@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        height: 50px;;
+    }
+</style>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+
+        <div>
+            <h2 v-show="isShow">v-show条件渲染基本使用</h2> 
+        </div>
+        <div>
+            <button v-on:click="toggle">切换h2标签的显示和隐藏</button>
+        </div>
+        
+    </template>
+
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: '#my-app',
+            data: function () {
+                return {
+                    isShow: true
+                }
+            },
+            methods: {
+                toggle() {
+                    this.isShow = !this.isShow;
+                }
+            }
+        }).mount("#app");
+    </script>
+
+</body>
+
+</html>
