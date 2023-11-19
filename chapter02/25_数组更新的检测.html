@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        <h4>电影列表</h4>
+        <ul>
+            <li v-for="(movie, index) in movies">{{index+1}}.{{movie}}</li>
+        </ul>
+        <input type="text" v-model="newMovie">
+        <button @click="addMovie">添加电影</button>
+
+    </template>  
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: "#my-app",
+
+            data() {
+                return {
+                    movies:['星际穿越','变形金刚','孤注一掷'],
+                    newMovie:""
+                }
+            },
+            
+            methods: {
+                addMovie(){
+                    // 系统会对被监听的数组的方法进行封装，所以当执行数组变更方法时，系统会自动触发视图的更新
+                    this.movies.push(this.newMovie);
+                    this.newMovie = ""
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
