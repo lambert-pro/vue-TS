@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        <h4>电影列表</h4>
+        <ul>
+            <li v-for="(movie, index) in movies"> {{movie}}</li>
+        </ul>
+        <button @click="showTopThree">显示前3名电影</button>
+        <button @click="showAll">显示全部电影</button>
+    
+
+    </template>  
+    <script src="./js/vue@3.2.23.js"></script>  
+    <script>
+        const app = Vue.createApp({
+            template: "#my-app",
+
+            data() {
+                return {
+                    movies:['1.星际穿越','2.变形金刚','3.孤注一掷','4.星际穿越4','5.变形金刚5'],
+                    template: []
+                }
+            },
+            
+            methods: {
+                showTopThree() {
+                    this.template = this.movies
+                    this.movies = this.movies.filter((movie, index) => index < 3)
+                },
+                showAll(){
+                    this.movies = this.template
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>

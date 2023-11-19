@@ -33,9 +33,12 @@
             
             methods: {
                 addMovie(){
-                    // 系统会对被监听的数组的方法进行封装，所以当执行数组变更方法时，系统会自动触发视图的更新
-                    this.movies.push(this.newMovie);
-                    this.newMovie = ""
+                    if(this.newMovie !== '' ){
+                        // 系统会对被监听的数组的方法进行封装，所以当执行数组变更方法时，系统会自动触发视图的更新
+                        this.movies.push(this.newMovie);
+                        this.newMovie = ""
+                    }
+                    
                 }
             }
         }).mount("#app");

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        <ul>
+            <!--有key时Vue3调用patchKeyedChildren方法更新列表, 没有key时调用patchUnkeyedChildren方法更新列表-->
+            <li v-for="item in letters" :key="item">{{item}}</li>
+        </ul>
+        <button @click="insertF">插入F字符串</button>
+
+    </template>  
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: "#my-app",
+
+            data() {
+                return {
+                    letters: ['a','b','c','d']
+                }
+            },
+            
+            methods: {
+                insertF(){
+                    this.letters.splice(2,0,'f')
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
