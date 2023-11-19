@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+
+        <h2>{{fullName}}</h2>
+        <h2>{{result}}</h2>
+        <h2>{{reverseMessage}}</h2>
+
+    </template>
+
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: '#my-app',
+            data: function () {
+                return {
+                    firstName: "Q",
+                    lastName: "lambert",
+                    score: 80,
+                    message: "Hello World"
+                }
+            },
+            methods: {
+
+            },
+            // computed属性
+            // 看起来像函数，但是使用时不需要加括号
+            // 计算属性是有缓存的，性能更好
+            computed: {
+                fullName() {
+                    return this.firstName + ' ' + this.lastName;
+                },
+                result() {
+                    return this.score >= 60 ? "及格" : "不及格";
+                },
+                reverseMessage() {
+                    return this.message.split("").reverse().join("");
+                }
+            }
+        }).mount("#app");
+    </script>
+
+</body>
+
+</html>
