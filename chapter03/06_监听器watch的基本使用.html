@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        请输入问题：<input type="text" v-model="question">
+        <div>{{answer}}</div>
+        
+
+
+    </template>  
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: "#my-app",
+
+            data() {
+                return {
+                    // 需求：监听question的变化，进行一些逻辑处理，比如发起网络请求
+                    question: "",
+                    answer: ""
+                }
+            },
+
+            watch:{
+
+                // 监听question的变化
+                // question: function(newValue, oldValue){
+                //     console.log("新的question值：",newValue,"旧的question值：",oldValue)
+                //     // question变化后调用queryAnswer()
+                //     this.queryAnswer()
+                // },
+
+                // 上面方法的简写
+                question(newValue, oldValue){
+                    console.log("新的question值：",newValue,"旧的question值：",oldValue)
+                    // question变化后调用queryAnswer()
+                    this.queryAnswer()
+                }
+            },
+            
+            methods: {
+                queryAnswer(){
+                    // 模拟发起网络请求，获取数据库中的数据
+                    this.answer = `你的问题是：${this.question}? 答案是：哈哈哈哈哈`
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
