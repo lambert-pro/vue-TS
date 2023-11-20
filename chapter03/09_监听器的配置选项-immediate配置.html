@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        
+        <h2>{{info.name}}</h2>
+        <h2>{{info.book.name}}</h2>
+        <button @click="changeInfo">改变info</button>
+        <button @click="changeInfoName">改变info.name</button>
+        <button @click="changeInfoBookName">改变info.book.name</button>
+    </template>  
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: "#my-app",
+
+            data() {
+                return {
+                    info:{ ame: "Code Why", age: 18, book: { name: 'Vue.js3 + TS' } }
+                }
+            },
+            
+            // 默认情况下,watch仅监听对info对象引起的变化，而不会监听其内部属性的变化
+            watch:{
+
+                info:{
+                    handler(newInfo, oldInfo){
+                        console.log("newInfo: ", newInfo, "oldInfo: ", oldInfo);
+                    },
+                    // info内部属性发生变化也会被监听
+                    deep: true,
+                    // 让handler中定义的函数立即执行一次
+                    immediate: true
+                }
+            },
+            
+            methods: {
+                // 输出log
+                changeInfo(){
+                    this.info = {name: "lambert", age : 18, book: {name: "Vue3"}}
+                },
+                //  不输出log
+                changeInfoName(){
+                    this.info.name = "kobe";
+                },
+                // 不输出log
+                changeInfoBookName(){
+                    this.info.book.name = "我才不要学习Vue"
+                }
+            }
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
