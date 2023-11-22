@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+
+        <!--将输入的内容的更新延迟到change时间触发时再进行，而不是每次输入内容都进行更新-->
+        <input type="text" v-model.lazy="msg">
+        <h2>{{msg}}</h2>
+    </template>
+
+    <script src="./js/vue@3.2.23.js"></script>
+    <script>
+        const app = Vue.createApp({
+            template: '#my-app',
+            data: function () {
+                return {
+                    msg: ""
+                }
+            },
+            methods: {
+
+            }
+        }).mount("#app");
+    </script>
+
+</body>
+
+</html>
