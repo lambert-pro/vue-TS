@@ -9,7 +9,8 @@
 </head>
 <style>
     .comps-a,
-    .comps-b {
+    .comps-b,
+    .comps-c {
         border: 1px solid #999;
         margin: 3px;
     }
@@ -21,10 +22,11 @@
     <!-- template中支持存在多个根标签-->
     <template id="my-app">
 
-        <div class="comps-b">
-            <input type="text" v-model="message">
-            <h4>{{message}}</h4>
-        </div>
+        <!-- 9.使用component-c全局组件-->
+        <component-c></component-c>
+
+        <!-- 6.使用component-b全局组件-->
+        <component-b></component-b>
 
         <!-- 3.使用全局组件-->
         <component-a></component-a>
@@ -39,18 +41,46 @@
         </div>
     </template>
 
+    <!--4.编写一个component-b全局组件模板-->
+    <template id="component-b">
+
+        <div class="comps-b">
+            <input type="text" v-model="message">
+            <h4>{{message}}</h4>
+        </div>
+    </template>
+
+    <!-- 7.编写一个component-c全局组件模板-->
+    <template id="component-c">
+        <div class="comps-c">
+            ComponentC
+        </div>
+
+    </template>
+
     <script src="./js/vue@3.2.23.js"></script>
     <script>
         const App = {
             template: "#my-app",
+
+        };
+
+        const app = Vue.createApp(App); //创建Vue实例
+
+        // 8.用app注册一个component-c全局组件
+        app.component("ComponentC", {
+            template: "#component-c"
+        });
+
+        // 5.用app注册一个component-b全局组件
+        app.component("component-b", {
+            template: "#component-b",
             data() {
                 return {
                     message: "Hello World!"
                 }
             }
-        };
-
-        const app = Vue.createApp(App); //创建Vue实例
+        });
 
         // 2.用app注册一个component-a全局组件
         // app.component(组件名称, 组件对象)
