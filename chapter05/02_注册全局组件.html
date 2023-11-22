@@ -24,13 +24,13 @@
 
         <!-- 9.使用component-c全局组件-->
         <component-c></component-c>
-
         <!-- 6.使用component-b全局组件-->
         <component-b></component-b>
-
         <!-- 3.使用全局组件-->
         <component-a></component-a>
     </template>
+
+
 
     <!--1.编写component-a 全局组件模板-->
     <template id="component-a">
@@ -55,8 +55,9 @@
         <div class="comps-c">
             ComponentC
         </div>
-
     </template>
+
+
 
     <script src="./js/vue@3.2.23.js"></script>
     <script>
@@ -64,14 +65,12 @@
             template: "#my-app",
 
         };
-
         const app = Vue.createApp(App); //创建Vue实例
 
         // 8.用app注册一个component-c全局组件
         app.component("ComponentC", {
             template: "#component-c"
         });
-
         // 5.用app注册一个component-b全局组件
         app.component("component-b", {
             template: "#component-b",
@@ -81,7 +80,6 @@
                 }
             }
         });
-
         // 2.用app注册一个component-a全局组件
         // app.component(组件名称, 组件对象)
         app.component("component-a", {
@@ -101,7 +99,6 @@
 
         app.mount("#app");
     </script>
-
 </body>
 
 </html>
