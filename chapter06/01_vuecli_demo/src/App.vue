@@ -4,11 +4,16 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// 1.使用ES6语法导一个SFC格式的HelloWorld组件
+// import HelloWorld from './components/HelloWorld.vue'
+
+//已经在vue.config.js中设置了路径别名
+import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
+    // 2.注册局部组件
     HelloWorld
   }
 }
